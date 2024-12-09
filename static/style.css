@@ -1,0 +1,58 @@
+body{
+    min-height: 100vh;
+}
+.text-primary{
+    color: red;
+}
+
+.card {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body {
+    flex-grow: 1; /* Faz o conteúdo expandir para ocupar a altura máxima */
+}
+
+.card-footer {
+    margin-top: auto; /* Empurra o footer para o final do card */
+    display: flex;
+    justify-content: flex-start; /* Alinha o botão à direita */
+    padding-top: 5px; /* Espaço opcional entre o conteúdo e o botão */
+    background-color: transparent; /* Remove o fundo para integrar com o restante do card */
+    border-top: none; /* Remove a borda superior do footer */
+}
+
+.card:hover {
+    transform: scale(1.02);
+    transition: all 0.7s cubic-bezier(0, 0, 0.5, 1);
+}
+
+.card:not(:hover) {
+    transform: scale(1);
+    transition: all 0.7s cubic-bezier(0, 0, 0.5, 1);
+}
+
+/* Estilo para o footer */
+.footer {
+    background-color: #f8f9fa; /* Cor de fundo suave */
+    color: #333; /* Cor do texto */
+    padding: 40px 0; /* Espaçamento vertical */
+    border-top: 1px solid #e5e5e5; /* Linha superior para separar do conteúdo */
+}
+
+.footer-content {
+    max-width: 1800px; /* Largura máxima do conteúdo */
+    margin: auto; /* Centraliza o conteúdo */
+    padding: 0 15px; /* Preenchimento horizontal */
+    text-align: center; /* Centraliza o texto e os ícones */
+}
+
+.footer p {
+    margin: 0; /* Remove margens padrão */
+    font-size: 0.9rem; /* Tamanho da fonte do texto */
+}

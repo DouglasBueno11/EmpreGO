@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}EmpreGO! - Currículos {% endblock %}
+
+{% block content %}
+<div class="file-list-container">
+    <h2>Candidatos</h2>
+    <ul>
+        {% for curriculo in candidatura %}
+        <li class="mb-3 border-bottom py-2">
+            <a href="/download/{{ curriculo.curriculo }}" class="btn btn-success btn-sm">Baixar Curriculo</a>
+            <a href="/delete/{{ curriculo.id_candidatura }}" class="btn btn-warning btn-sm">Excluir Curriculo</a>
+            {{ curriculo.nome }} - {{ curriculo.email }} - {{ curriculo.telefone }}-
+        </li>
+        {% else %}
+            <p>Nenhuma candidatura no momento.</p>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

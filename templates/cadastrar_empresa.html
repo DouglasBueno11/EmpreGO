@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}EmpreGO! - Cadastrar Vaga{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1>Cadastrar Empresa</h1>
+
+<form action="/cadastrar_empresa" method="post" class="needs-validation" novalidate>
+
+<label for="nome_empresa" class="form-label">Nome Fantasia</label>
+<input type="text" name="nome_empresa" maxlength="100" class="form-control" required><br><br>
+
+<label for="cnpj" class="form-label">CNPJ</label>
+<input type="text" name="cnpj" placeholder="Somente números" class="form-control" id="cnpj" required><br><br>
+
+<label for="telefone" class="form-label">Telefone de contato</label>
+<input type="text" name="telefone" class="form-control" placeholder="Somente números" id="telefone" required><br><br>
+
+<h2>Informações de acesso</h2>
+<label for="email" class="form-label">E-mail</label>
+<input type="email" name="email" maxlength="100" class="form-control" required><br><br>
+
+<label for="senha" class="form-label">Senha</label>
+<input type="text" name="senha" class="form-control" required><br><br>
+
+<div class="d-flex float-right">
+    <button type="submit" class="btn btn-primary">Cadastrar Empresa</button>
+</div>
+{% if msg_erro %} <p>{{ msg_erro }}</p> {% endif %}
+ 
+</form>
+
+<!-- Validação Bootstrap -->
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (() => {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+        }, false)
+    })
+    })()
+</script>
+<!-- Link do Input Mask -->
+<script src="https://cdn.jsdelivr.net/npm/inputmask@5.0.8/dist/inputmask.min.js"></script>
+<!-- Configuração do Input Mask-->
+<script>
+    Inputmask("99.999.999/9999-99").mask(document.getElementById("cnpj")); //Mascara para cnpj
+    Inputmask("(99)99999-9999").mask(document.getElementById("telefone")); //Mascara para telefone
+    Inputmask("numeric", {
+        radixPoint:",",
+        groupSeparator:".",
+        digits:2,
+        autoGroup: true,
+        rightAlign: false,
+        allowMinus: false,
+        prefix: "R$"
+    }).mask(document.getElementById("salario")); //Mascara para cpf
+</script>
+{% endblock %}

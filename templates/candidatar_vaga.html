@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}EmpreGO! - Candidatar-se à Vaga{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1 class="text-center">Candidatar-se à Vaga</h1>
+            <p class="text-center">Preencha o formulário abaixo para se candidatar a esta oportunidade de emprego.</p>
+
+            {% if msg_erro %}
+            <div class="alert alert-danger" role="alert">
+                {{ msg_erro }}
+            </div>
+            {% endif %}
+
+            <form action="/candidatar_vaga/{{ id_vaga }}" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="nome" class="form-label">Nome Completo</label>
+                    <input type="text" class="form-control" id="nome" name="nome" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="telefone" class="form-label">Telefone de Contato</label>
+                    <input type="text" class="form-control" id="telefone" name="telefone" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="curriculo" class="form-label">Currículo (PDF)</label>
+                    <input type="file" class="form-control" id="curriculo" name="curriculo" accept=".pdf" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="mensagem" class="form-label">Mensagem de Apresentação</label>
+                    <textarea class="form-control" id="mensagem" name="mensagem" rows="4" placeholder="Escreva uma breve apresentação" required></textarea>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">Enviar Candidatura</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Link do Input Mask -->
+<script src="https://cdn.jsdelivr.net/npm/inputmask@5.0.8/dist/inputmask.min.js"></script>
+
+<!-- Script de configuração do Input Mask-->
+ <script>
+    Inputmask("(99)99999-9999").mask(document.getElementById("telefone")) //Máscara para Telefone
+    </script>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}EmpreGO! - Cadastrar Vaga{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1>Editar Empresa</h1>
+
+<h1>EmpreGo</h1>
+<h2>Alterar dados da empresa</h2>
+<hr>
+<form action="/editar_empresa/{{empresa['id_empresa']}}" method="post">
+<label for="nome_empresa" class="form-label">Nome Fantasia da empresa:</label>
+<input type="text" name="nome_empresa" value="{{empresa['nome_empresa']}}" class="form-control" required><br><br>
+
+<label for="cnpj" class="form-label">CNPJ:</label>
+<input type="text" name="cnpj" value="{{empresa['cnpj']}}"  placeholder="Somente números" class="form-control" id="cnpj" required>
+
+<label for="telefone" class="form-label">Telefone:</label>
+<input type="text" name="telefone" value="{{empresa['telefone']}}"  placeholder="Somente números" class="form-control" id="telefone" required>
+
+<h2>Informações para acesso da plataforma:</h2>
+<label for="email" class="form-label">E-mail:</label>
+<input type="email" name="email" value="{{empresa['email']}}" class="form-control" required><br><br>
+
+<label for="senha" class="form-label">Senha:</label>
+<input type="text" name="senha" value="{{empresa['senha']}}" class="form-control" required><br><br>
+
+<div class="d-flex float-right">
+    <button type="submit" class="btn btn-primary">Confirmar 
+        Alterações</button>
+</div>
+{% if msg_erro %}
+    <p style="color: red;">{{ msg_erro }}</p>
+{% endif %}
+</form>
+<!-- Validação Bootstrap -->
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (() => {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+        }, false)
+    })
+    })()
+</script>
+<!-- Link do Input Mask -->
+<script src="https://cdn.jsdelivr.net/npm/inputmask@5.0.8/dist/inputmask.min.js"></script>
+<!-- Configuração do Input Mask-->
+<script>
+    Inputmask("99.999.999/9999-99").mask(document.getElementById("cnpj")); //Mascara para cnpj
+    Inputmask("(99)99999-9999").mask(document.getElementById("telefone")); //Mascara para telefone
+    Inputmask("numeric", {
+        radixPoint:",",
+        groupSeparator:".",
+        digits:2,
+        autoGroup: true,
+        rightAlign: false,
+        allowMinus: false,
+        prefix: "R$"
+    }).mask(document.getElementById("salario")); //Mascara para cpf
+</script>
+
+{% endblock %}

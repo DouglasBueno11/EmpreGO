@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}EmpreGO! - Candidatura Enviada{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <h1 class="text-success">Candidatura Enviada com Sucesso!</h1>
+            <p class="mt-4">Obrigado por se candidatar à vaga. Sua candidatura foi registrada e enviada para análise. Entraremos em contato caso você seja selecionado para as próximas etapas.</p>
+            
+            <div class="my-4">
+                <img src="/static/img/success-icon.png" alt="Candidatura enviada com sucesso" class="img-fluid" style="max-width: 150px;">
+            </div>
+            
+            <a href="/" class="btn btn-primary mt-3">Voltar para a Página Inicial</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

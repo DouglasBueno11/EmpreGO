@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}EmpreGO! - {{ word }} {% endblock %}
+
+{% block content %}
+
+<h1>Vagas buscadas como: '{{ word }}'</h1>
+<div class="container">
+
+    <div class="row mt-5">
+
+        {% for vaga in vagas %}
+
+            <div class="col-12 col-md-6 col-lg-4 mt-3">
+                {% include 'card.html' %}
+            </div>
+
+        {% endfor %}
+
+        {% if not vagas %}
+            <div class="col-12">
+                <p class="text-center">Nenhuma vaga como "{{ word }}".</p>
+            </div>
+        {% endif %}
+    </div>
+
+
+</div>
+
+{% endblock %}
