@@ -1,4 +1,4 @@
-![alt text](<../static/img/capaReadme.jpg>)
+![alt text](static/img/capaReadme.jpg)
 ### Curso Técnico de Desenvolvimento de Sistemas - Senai Itapeva
 # EmpreGO
 
